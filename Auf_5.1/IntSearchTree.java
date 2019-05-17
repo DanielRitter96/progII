@@ -51,7 +51,7 @@ public class IntSearchTree extends IntBinTree{
 	-rekursiv
 	@param int -der Wert den man einfügen will
 	*/
-	public void insert(int i){
+	/*public void insert(int i){
 		if(i <= getCont()){// Wert mus in den linken Teilbaum
 			if(left != null){
 				left.insert(i);// suche im linken Teilbaum nach freier Stelle
@@ -65,5 +65,27 @@ public class IntSearchTree extends IntBinTree{
 				setRight(new IntSearchTree(i));
 			}
 		}
+	}*/
+	public void insert(int i){
+		IntSearchTree root= this;
+		while(true){
+			if(i <= root.getCont()){
+				if(root.getLeft() != null){
+					root= (IntSearchTree)root.getLeft();
+
+				}else{
+					root.setLeft(new IntSearchTree(i));
+					break;
+				}
+			}else{
+				if(root.getRight() != null){
+					root= (IntSearchTree)root.getRight();
+				}else{
+					root.setRight(new IntSearchTree(i));
+					break;
+				}
+			}
+		}
 	}
+
 }

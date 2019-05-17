@@ -18,7 +18,7 @@ public class IntRandTree extends IntBinTree{
 	Konstruktor für Binäre bäume, wobei es sich um ein Blatt handelt.
 	@param int - Der Wert im Baum.
 	*/
-	public IntBinTree(int value){//wenn man nur blätter hinzufügen will
+	public IntRandTree(int value){//wenn man nur blätter hinzufügen will
 		super(value);
 	}
 
@@ -55,13 +55,13 @@ public class IntRandTree extends IntBinTree{
 		int random= randomm.nextInt(2);// Zufallszahl zwischen 0 und 1
 		if(random == 0){// bei 0 nach links gehen
 			if(left == null){
-				setLeft(new IntBinTree(i));
+				setLeft(new IntRandTree(i));
 			}else{
 				left.insert(i);// suche im linken Teilbaum auf freie Stelle
 			}
 		}else{
 			if(right == null){
-				setRight(new IntBinTree(i));
+				setRight(new IntRandTree(i));
 			}else{
 				right.insert(i);// analog zu links
 			}

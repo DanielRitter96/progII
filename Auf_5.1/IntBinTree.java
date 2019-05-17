@@ -1,6 +1,6 @@
 //package de.uni_hannover.hci.daniel_ritter.bintree;
 
-public abstract IntBinTree{
+public abstract class IntBinTree{
 	public IntBinTree left;
 	public int value;
 	public IntBinTree right;
@@ -62,7 +62,7 @@ public abstract IntBinTree{
 		return s;
 
 	}
-	
+
 	/**
 	Gibt den Baum als String in Inorder aus. Dabei werden Sonderzeichen hinzugefügt um klarer zu machen, wie genau die Struktur
 	des Baumes ist. -rekursiv
@@ -81,10 +81,10 @@ public abstract IntBinTree{
 		}
 		return s;
 	}
-	
-	public abstract void insert(int i);
-	
-	public abstract boolean search(int i);
-	
 
-} 
+	public abstract void insert(int i);
+
+	public abstract boolean search(int i);
+
+
+}

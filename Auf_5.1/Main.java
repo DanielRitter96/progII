@@ -4,8 +4,8 @@
 
 public class Main{
     public static void main(String[] args){
-        IntBinTree tree1= new IntRandTree(10);
-        IntBinTree tree2= new IntSearchTree(10);
+        IntRandTree tree1= new IntRandTree(10);
+        IntSearchTree tree2= new IntSearchTree(10);
         tree1.insert(3);
         tree1.insert(6);
         tree1.insert(16);
