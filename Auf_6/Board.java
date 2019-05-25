@@ -1,15 +1,17 @@
+import java.util.*;
+
 public class Board{
 	public GameObj[][] board;
 
 
 	public Board(){
-		board= new GameObj()[8][8];
+		board= new Colorless()[8][8];
 		for(int i= 0;  i < board.length; i++){
 			for(int j= 0; j < board[0].length; j++){
-				board[i][j]= null;
+				board[i][j].setType= Field.EMPTY;
 			}
 		}
-		/*board[3][3]= Field.WHITE;
+	  /*board[3][3]= Field.WHITE;
 		board[3][4]= Field.BLACK;
 		board[4][4]= Field.WHITE;
 		board[4][3]= Field.BLACK;*/
@@ -38,14 +40,13 @@ public class Board{
 		for(int i= 0; i < 8; i++){
 			System.out.print(i + "|");
 			for(int j= 0; j < 8;j++){
-				if(board[i][j] == null){
-					System.out.print("_|");
-				}else{
-					switch(board[i][j].getType()){
-						case WHITE: System.out.print("O|"); break;
-						case BLACK: System.out.print("X|"); break;
-					}
+				
+				switch(board[i][j].getType()){
+					case EMPTY: System.out.print("_|"); break;
+					case WHITE: System.out.print("O|"); break;
+					case BLACK: System.out.print("X|"); break;
 				}
+				
 			}
 		}
 	}
@@ -91,15 +92,15 @@ public class Board{
 		int i= point[0];
 		int j= point[1];
 		int[] valid= new int[8];//if valid remains 0 then it is not a vaild draw
-		boolean free= board[point[0]][point[1]] == null;
+		//boolean free= board[point[0]][point[1]] == null;
 		ObjList list;
 
 		//runter
-		for(;free && board[i + 1][j].getType() == toFlip; i++){// out of bounce??
+		for(;board[i + 1][j].getType() == toFlip; i++){// out of bounce??
 			valid[0]++;// sum function?
 			list.add(board[i + 1][j], 0);
 		}
-		if(board[i + 1][j] == null && board[i + 1][j].getType() != turn){
+		if(board[i + 1][j].getType() != turn){
 			valid[0]= 0;
 			list.remove(0);//remove with SeqNum 0
 		}
@@ -107,11 +108,11 @@ public class Board{
 		j= point[1];
 
 		//hoch
-		for(;free && board[i - 1][j].getType() == toFlip; i--){// out of bounce??
+		for(;board[i - 1][j].getType() == toFlip; i--){// out of bounce??
 			valid[1]++;// sum function?
 			list.add(board[i - 1][j], 1);
 		}
-		if(board[i - 1][j] == null && board[i - 1][j].getType() != turn){
+		if(board[i - 1][j].getType() != turn){
 			valid[1]= 0;
 			list.remove(1);//remove with SeqNum 1
 		}
@@ -119,11 +120,11 @@ public class Board{
 		j= point[1];
 
 		//rechts
-		for(;free && board[i][j + 1].getType() == toFlip; j++){// out of bounce??
+		for(;board[i][j + 1].getType() == toFlip; j++){// out of bounce??
 			valid[2]++;// sum function?
 			list.add(board[i][j + 1], 2);
 		}
-		if(board[i][j + 1] == null && board[i][j + 1].getType() != turn){
+		if(board[i][j + 1].getType() != turn){
 			valid[2]= 0;
 			list.remove(2);//remove with SeqNum 2
 		}
@@ -131,11 +132,11 @@ public class Board{
 		j= point[1];
 
 		//links
-		for(;free && board[i][j - 1].getType() == toFlip; j--){// out of bounce??
+		for(;board[i][j - 1].getType() == toFlip; j--){// out of bounce??
 			valid[3]++;// sum function?
 			list.add(board[i][j - 1], 3);
 		}
-		if(board[i][j - 1] == null && board[i][j - 1].getType() != turn){
+		if(board[i][j - 1].getType() != turn){
 			valid[3]= 0;
 			list.remove(3);//remove with SeqNum 3
 		}
@@ -143,11 +144,11 @@ public class Board{
 		j= point[1];
 
 		//diag. rechts_unten
-		for(;free && board[i + 1][j + 1].getType() == toFlip; i++, j++){// out of bounce??
+		for(;board[i + 1][j + 1].getType() == toFlip; i++, j++){// out of bounce??
 			valid[4]++;// sum function?
 			list.add(board[i + 1][j + 1], 4);
 		}
-		if(board[i + 1][j + 1] == null && board[i + 1][j + 1].getType() != turn){
+		if(board[i + 1][j + 1].getType() != turn){
 			valid[4]= 0;
 			list.remove(4);//remove with SeqNum 4
 		}
@@ -155,11 +156,11 @@ public class Board{
 		j= point[1];
 
 		//diag. links_hoch
-		for(;free && board[i - 1][j - 1].getType() == toFlip; i--, j--){// out of bounce??
+		for(;board[i - 1][j - 1].getType() == toFlip; i--, j--){// out of bounce??
 			valid[5]++;// sum function?
 			list.add(board[i - 1][j - 1], 5);
 		}
-		if(board[i - 1][j - 1] == null && board[i - 1][j - 1].getType() != turn){
+		if(board[i - 1][j - 1].getType() != turn){
 			valid[5]= 0;
 			list.remove(5);//remove with SeqNum 5
 		}
@@ -167,11 +168,11 @@ public class Board{
 		j= point[1];
 
 		// diag. rechts_hoch
-		for(;free && board[i - 1][j + 1].getType() == toFlip; i--, j++){// out of bounce??
+		for(;board[i - 1][j + 1].getType() == toFlip; i--, j++){// out of bounce??
 			valid[6]++;// sum function?
 			list.add(board[i - 1][j + 1], 6);
 		}
-		if(board[i - 1][j + 1] == null && board[i - 1][j + 1].getType() != turn){
+		if(board[i - 1][j + 1].getType() != turn){
 			valid[6]= 0;
 			list.remove(6);//remove with SeqNum 6
 		}
@@ -179,11 +180,11 @@ public class Board{
 		j= point[1];
 
 		//diag. links_unten
-		for(;free && board[i + 1][j - 1].getType() == toFlip; i++, j--){// out of bounce??
+		for(;board[i + 1][j - 1].getType() == toFlip; i++, j--){// out of bounce??
 			valid[7]++;// sum function?
 			list.add(board[i + 1][j - 1], 7);
 		}
-		if(board[i + 1][j - 1] == null && board[i + 1][j - 1].getType() != turn){
+		if(board[i + 1][j - 1].getType() != turn){
 			valid[7]= 0;
 			list.remove(7);//remove with SeqNum 7
 		}

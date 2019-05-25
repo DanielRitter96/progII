@@ -1,3 +1,3 @@
 public enum Field{
-	WHITE, BLACK
+	EMPTY, WHITE, BLACK
 }

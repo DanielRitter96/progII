@@ -15,11 +15,17 @@ public class ObjList{
 	}
 
 	public void add(GameObj element){
-		new ObjList(element, this.element);
+		for(ObjList temp= this; temp.getNext() != null; temp= temp.getNext()){
+			temp.setNext(new ObjList(element, null));
+		}
+		
 	}
 
 	public void add(GameObj element, int SeqNum){
-		new ObjList(element, this.element, SeqNum );
+		for(ObjList temp= this; temp.getNext() != null; temp= temp.getNext()){
+			temp.setNext(new ObjList(element, null, SeqNum));
+		}
+		
 	}
 
 
