@@ -1,12 +1,15 @@
+package de.uni_hannover.hci.daniel_ritter.main.game.gameobj;
+
+import de.uni_hannover.hci.daniel_ritter.main.game.gameobj.*;
+import de.uni_hannover.hci.daniel_ritter.main.game.*;
+
 public class ObjList{
 	public GameObj element;
 	public ObjList next;
 	public int seqNum;
 
 	public ObjList(){
-		//this.element= null;
-	//	this.next= null;
-		//this.seqNum= -1;//the seqNum starts at the index 0
+		//does nothing really but i need it anyway
 	}
 
 	public ObjList(GameObj element, ObjList next){
@@ -23,7 +26,7 @@ public class ObjList{
 	public void add(GameObj element){
 		ObjList temp= this;
 		for(; temp.getNext() != null; temp= temp.getNext()){
-			//I'M SUCH AN IDIOT
+
 		}
 		temp.setNext(new ObjList(element, null));
 
@@ -32,7 +35,7 @@ public class ObjList{
 	public void add(GameObj element, int SeqNum){
 		ObjList temp= this;
 		for(; temp.getNext() != null; temp= temp.getNext()){
-			//I'M SUCH AN IDIOT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 		}
 		temp.setNext(new ObjList(element, null, SeqNum));
 
@@ -54,11 +57,7 @@ public class ObjList{
 	public void setNext(ObjList next){
 		this.next= next;
 	}
-	/*
-	public void remove(int[] point){// vllt doch anders
 
-	}
-	*/
 	public void remove(int seqNum){
 		/*if(this.getSeqNum() == seqNum){
 			ObjList temp= this;
@@ -67,10 +66,9 @@ public class ObjList{
 		// in java we have to check if the object actually exists before accessing any methods
 		for(ObjList temp= this; temp != null && temp.getNext() != null; ){
 			if((temp.getNext()).getSeqNum() == seqNum){
-				//ObjList toDelete= temp.getNext();
+
 				temp.setNext((temp.getNext()).getNext());
-				//toDelete= null;
-				//temp= temp.getNext();
+				
 			}
 			if(temp.getNext() != null && (temp.getNext()).getSeqNum() != seqNum){
 				temp= temp.getNext();

@@ -1,3 +1,8 @@
+package de.uni_hannover.hci.daniel_ritter.main.game.board;
+
+import de.uni_hannover.hci.daniel_ritter.main.game.gameobj.*;
+import de.uni_hannover.hci.daniel_ritter.main.game.gameobj.concrete.*;
+import de.uni_hannover.hci.daniel_ritter.main.game.*;
 import java.util.*;
 
 public class Board{
@@ -11,10 +16,7 @@ public class Board{
 				board[i][j]= new Colorless(i,j);
 			}
 		}
-	  /*board[3][3]= Field.WHITE;
-		board[3][4]= Field.BLACK;
-		board[4][4]= Field.WHITE;
-		board[4][3]= Field.BLACK;*/
+
 
 		GameObj w1= new White(3,3);
 		GameObj w2= new White(4,4);
@@ -26,14 +28,7 @@ public class Board{
 		board[4][4]= w2;
 		board[4][3]= b2;
 
-		/*GameObj coinw1= new White(3,3,WHITE);
-		GameObj coinw2= new White(4,4,WHITE);
-		GameObj coinb1= new Black(3,4,BLACK);
-		GameObj coinb2= new Black(4,3,BLACK);
-		ObjList w= new ObjList(coinw1, null);
-		w.add(coinw2);
-		ObjList b= new OnjList(cointb1, null);
-		b.add(coinb2);*/
+
 	}
 
 	public void printBoard(){
@@ -86,15 +81,7 @@ public class Board{
 		return board[x][y];
 	}
 
-	/*public boolean valid(int[] point, ObjList list){// vermutlich doch noch anders
-		int x= point[0];
-		int y= point[1];
-		if(board[x][y] == Field.EMPTY){
-			for(ObjList temp= list; temp != null; temp= temp.getNext()){
 
-			}
-		}
-	}*/
 	public boolean inBounds(int i, int j){
 		return i >= 0 && i <= 7 && j >= 0 && j <= 7;
 	}

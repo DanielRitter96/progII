@@ -1,3 +1,8 @@
+package de.uni_hannover.hci.daniel_ritter.main.game;
+
+import de.uni_hannover.hci.daniel_ritter.main.game.gameobj.*;
+import de.uni_hannover.hci.daniel_ritter.main.game.board.*;
+import de.uni_hannover.hci.daniel_ritter.main.game.gameobj.concrete.*;
 import java.util.*;
 
 public class Game{
