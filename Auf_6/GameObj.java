@@ -1,10 +1,11 @@
 public abstract class GameObj{
 	public Field type;
 	public int[] point;
-	public GameObj(int x, int y){
+	public GameObj(int x, int y, Field type ){
+		this.point= new int[2];
 		point[0]= x;
 		point[1]= y;
-		//this.type= type;
+		this.type= type;
 	}
 
 	public int[] getPoint(){// weiss nicht warum, aber warum nicht

@@ -1,5 +1,6 @@
 public class Colorless extends GameObj{
-	public Black(int x, int y){
+	public Colorless(int x, int y){
 		super(x, y, Field.EMPTY);
+		//super.type= ;
 	}
 }
